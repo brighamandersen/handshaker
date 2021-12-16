@@ -3,10 +3,14 @@ from time import sleep
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
+import argparse
 
+parser = argparse.ArgumentParser()
+parser.add_argument("-q", "--query", type=str, help="Job search query", required=True)
+args = parser.parse_args()
 
-# Check cmd line args (need to pass in job description)
-job_query = "Front End Developer"
+# Convert spaces to '%20's for url
+job_query = args.query.replace(" ", "%20")
 
 # Grab up env vars
 BYU_USERNAME = os.environ.get("BYU_USERNAME")
@@ -15,8 +19,10 @@ BYU_PASSWORD = os.environ.get("BYU_PASSWORD")
 # start up web driver
 driver = webdriver.Chrome()
 
-# Try to go to posting page (it will redirect here after login)
-driver.get("https://byu.joinhandshake.com/postings")
+# Go to search url (it will first redirect for auth)
+driver.get(
+    f"https://byu.joinhandshake.com/postings?page=1&per_page=1000&sort_direction=desc&sort_column=default&query={job_query}"
+)
 
 # Handle login
 
@@ -37,12 +43,8 @@ password_input.send_keys(Keys.ENTER)  # Press enter to submit login
 # Give time to do DUO two-factor auth and redirect to postings page
 sleep(30)
 
-# Type in search
-job_search_input = driver.find_element(By.ID, "quick-filters-query")
-job_search_input.send_keys(job_query)
-job_search_input.send_keys(Keys.ENTER)
-
-# Grab postings
-postings = driver.find_elements(By.xpath("//a[@data-hook='jobs-card']"))
+# Once redirected back to search, then grab all postings
+# postings = driver.find_elements(By.xpath("//a[@data-hook='jobs-card']"))
+postings = driver.find_element(By.cssSelector("a[data-hook='jobs-card']"))
 print(postings)
 print(len(postings))
