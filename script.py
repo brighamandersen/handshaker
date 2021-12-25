@@ -10,7 +10,8 @@ parser.add_argument("-q", "--query", type=str, help="Job search query", required
 args = parser.parse_args()
 
 # Convert spaces to '%20's for url
-job_query = args.query.replace(" ", "%20")
+raw_job_query = args.query
+job_query = raw_job_query.replace(" ", "%20")
 
 # Grab up env vars
 BYU_USERNAME = os.environ.get("BYU_USERNAME")
@@ -43,8 +44,17 @@ password_input.send_keys(Keys.ENTER)  # Press enter to submit login
 # Give time to do DUO two-factor auth and redirect to postings page
 sleep(30)
 
+num_applies = 0  # Keeps track of how many times you applied successfully
+
 # Once redirected back to search, then grab all postings
-# postings = driver.find_elements(By.xpath("//a[@data-hook='jobs-card']"))
+postings = driver.find_elements(By.xpath("//a[@data-hook='jobs-card']"))
 postings = driver.find_element(By.cssSelector("a[data-hook='jobs-card']"))
 print(postings)
 print(len(postings))
+
+print("Successfully applied to", num_applies, raw_job_query, "jobs!")
+print(
+    "Visit",
+    "https://byu.joinhandshake.com/applications?ref=account-dropdown",
+    "for details on where you applied.",
+)
