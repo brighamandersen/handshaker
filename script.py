@@ -53,8 +53,5 @@ print(postings)
 print(len(postings))
 
 print("Successfully applied to", num_applies, raw_job_query, "jobs!")
-print(
-    "Visit",
-    "https://byu.joinhandshake.com/applications?ref=account-dropdown",
-    "for details on where you applied.",
-)
+APP_RESULTS_URL = "https://byu.joinhandshake.com/applications?ref=account-dropdown"
+print(f"Visit {APP_RESULTS_URL} for details on where you applied.")
