@@ -47,10 +47,49 @@ sleep(30)
 num_applies = 0  # Keeps track of how many times you applied successfully
 
 # Once redirected back to search, then grab all postings
-postings = driver.find_elements(By.xpath("//a[@data-hook='jobs-card']"))
-postings = driver.find_element(By.cssSelector("a[data-hook='jobs-card']"))
-print(postings)
-print(len(postings))
+# postings = driver.find_elements(By.xpath("//a[@data-hook='jobs-card']"))
+# postings = driver.find_element(By.cssSelector("a[data-hook='jobs-card']"))
+
+# postings = driver.find_elements(
+#     By.XPATH, "//body[contains(@class, 'style__card-content')]"
+# )
+# print(postings)
+# print(len(postings))
+########
+
+
+# For each posting
+
+# Click on sidebar posting
+
+# Check if there's a 'Quick Apply' button
+
+# If yes
+# Click 'Quick Apply' Button
+
+# Maybe check here that there's only 1 step
+# Click resume button
+# Click 'Submit' Button
+
+
+quick_posting = driver.find_element(By.XPATH, '//*[@id="posting-257078124"]/div')
+quick_posting.click()
+quick_posting_apply_btn = driver.find_element(
+    By.XPATH,
+    '//*[@id="skip-to-content"]/div[3]/div/div[1]/div/form/div[2]/div/div/div[2]/div[1]/div[2]/div[2]/div/div[1]/span/button',
+)
+quick_posting_apply_btn.click()
+quick_posting_add_resume_btn = driver.find_element(
+    By.XPATH,
+    "/html/body/reach-portal/div[3]/div/div/div/span/form/div[1]/div/div[2]/fieldset[1]/div/div[2]/span[1]/button",
+)
+quick_posting_add_resume_btn.click()
+quick_posting_submit_btn = driver.find_element(
+    By.XPATH,
+    "/html/body/reach-portal/div[3]/div/div/div/span/form/div[2]/div/span/div/button",
+)
+quick_posting_submit_btn.click()
+
 
 print("Successfully applied to", num_applies, raw_job_query, "jobs!")
 APP_RESULTS_URL = "https://byu.joinhandshake.com/applications?ref=account-dropdown"
