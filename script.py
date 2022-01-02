@@ -72,16 +72,16 @@ num_applies = 0  # Keeps track of how many times you applied successfully
 # Click 'Submit' Button
 
 
-quick_posting = driver.find_element(By.XPATH, '//*[@id="posting-257078124"]/div')
+quick_posting = driver.find_element(By.XPATH, '//*[@id="posting-278714558"]/div')
 quick_posting.click()
 quick_posting_apply_btn = driver.find_element(
-    By.XPATH,
-    '//*[@id="skip-to-content"]/div[3]/div/div[1]/div/form/div[2]/div/div/div[2]/div[1]/div[2]/div[2]/div/div[1]/span/button',
+    By.CLASS_NAME,
+    "apply-button",
 )
 quick_posting_apply_btn.click()
 quick_posting_add_resume_btn = driver.find_element(
     By.XPATH,
-    "/html/body/reach-portal/div[3]/div/div/div/span/form/div[1]/div/div[2]/fieldset[1]/div/div[2]/span[1]/button",
+    "/html/body/reach-portal/div[3]/div/div/div/span/form/div[1]/div/div[2]/fieldset/div/div[2]/span[1]/button",
 )
 quick_posting_add_resume_btn.click()
 quick_posting_submit_btn = driver.find_element(
