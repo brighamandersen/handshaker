@@ -68,27 +68,25 @@ for posting in postings:
 
     # Click on sidebar posting
     posting.click()
-    sleep(3)
+    sleep(2)
 
-    # Check if there's an 'Apply' button
-    quick_apply_button_results = driver.find_elements(
-        By.XPATH, '//button/span/div[text()="Apply"]'
+    # Check if there's a 'Quick Apply' button
+    apply_button_results = driver.find_elements(
+        By.XPATH, '//button/span/div[text()="Quick Apply"]'
     )
-    if len(quick_apply_button_results) == 0:  # Check for quick apply if no luck
-        quick_apply_button_results = driver.find_elements(
-            By.XPATH, '//button/span/div[text()="Quick Apply"]'
+    if len(apply_button_results) == 0:  # Check for normal apply if no luck
+        apply_button_results = driver.find_elements(
+            By.XPATH, '//button/span/div[text()="Apply"]'
         )
-    print("qa", quick_apply_button_results)
+    print("qa", apply_button_results)
 
     # If there is one
-    if len(quick_apply_button_results) > 1:
+    if len(apply_button_results) > 1:
 
-        # Click 'Quick Apply' Button
-        quick_apply_button = quick_apply_button_results[
-            0
-        ]  # Grab the button from the list
-        quick_apply_button.click()
-        sleep(3)
+        # Click Apply Button
+        apply_button = apply_button_results[0]  # Grab the button from the list
+        apply_button.click()
+        sleep(2)
 
         # FIXME -- Maybe check here that there's only 1 step
 
@@ -98,7 +96,7 @@ for posting in postings:
             "/html/body/reach-portal/div[3]/div/div/div/span/form/div[1]/div/div[2]/fieldset/div/div[2]/span[1]/button",
         )
         add_resume_btn.click()
-        sleep(3)
+        sleep(2)
 
         # Click 'Submit' Button
         submit_btn = driver.find_element(
@@ -106,7 +104,7 @@ for posting in postings:
             "/html/body/reach-portal/div[3]/div/div/div/span/form/div[2]/div/span/div/button",
         )
         submit_btn.click()
-        sleep(3)
+        sleep(2)
 
         # Increment number of successful applies
         num_applies += 1
