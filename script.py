@@ -9,7 +9,7 @@ parser = argparse.ArgumentParser()
 parser.add_argument("-q", "--query", type=str, help="Job search query", required=True)
 args = parser.parse_args()
 
-PER_PAGE = 10  # FIXME - Change
+PER_PAGE = 50  # FIXME - Change
 
 # Convert spaces to '%20's for url
 raw_job_query = args.query
@@ -50,7 +50,6 @@ num_applies = 0  # Keeps track of how many times you applied successfully
 
 # Find all postings
 postings = driver.find_elements(By.XPATH, "//a[@data-hook='jobs-card']")
-print("Number of postings is", len(postings))
 
 # For each posting
 for posting in postings:
