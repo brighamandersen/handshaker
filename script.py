@@ -48,19 +48,8 @@ sleep(25)
 
 num_applies = 0  # Keeps track of how many times you applied successfully
 
-# Once redirected back to search, then grab all postings
-# postings = driver.find_elements(By.xpath("//a[@data-hook='jobs-card']"))
-# postings = driver.find_element(By.cssSelector("a[data-hook='jobs-card']"))
-
-# postings = driver.find_elements(
-#     By.XPATH, "//body[contains(@class, 'style__card-content')]"
-# )
-########
-
-
 # Find all postings
 postings = driver.find_elements(By.XPATH, "//a[@data-hook='jobs-card']")
-print(postings)
 print("Number of postings is", len(postings))
 
 # For each posting
@@ -78,23 +67,30 @@ for posting in postings:
         apply_button_results = driver.find_elements(
             By.XPATH, '//button/span/div[text()="Apply"]'
         )
-    print("qa", apply_button_results)
 
     # If there is one
     if len(apply_button_results) > 1:
 
         # Click Apply Button
+
         apply_button = apply_button_results[0]  # Grab the button from the list
         apply_button.click()
         sleep(2)
 
-        # FIXME -- Maybe check here that there's only 1 step
-
         # Click resume button
-        add_resume_btn = driver.find_element(
+
+        add_resume_btn_results = driver.find_elements(
             By.XPATH,
             "/html/body/reach-portal/div[3]/div/div/div/span/form/div[1]/div/div[2]/fieldset/div/div[2]/span[1]/button",
         )
+        # If there's no add resume button, skip over that posting
+        if len(add_resume_btn_results) == 0:
+            exit_posting_btn = driver.find_element(
+                By.XPATH, "/html/body/reach-portal/div[3]/div/div/div/span/div/button"
+            )
+            exit_posting_btn.click()
+            continue  # Skip to next posting
+        add_resume_btn = add_resume_btn_results[0]  # Grab the button from the list
         add_resume_btn.click()
         sleep(2)
 
@@ -112,6 +108,11 @@ for posting in postings:
 # Close browser
 driver.close()
 
-print("Successfully applied to", num_applies, raw_job_query, "jobs!")
+print(
+    "Successfully applied to",
+    str(num_applies) + "/" + str(len(postings)),
+    raw_job_query,
+    "jobs!",
+)
 APP_RESULTS_URL = "https://byu.joinhandshake.com/applications?ref=account-dropdown"
 print(f"Visit {APP_RESULTS_URL} for details on where you applied.")
