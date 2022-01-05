@@ -74,7 +74,7 @@ for posting in postings:
     )
     if len(posting_company_results) == 1:
         posting_company = posting_company_results[0].text
-    posting_headline = posting_name + " @ ", posting_company
+    posting_headline = posting_name + " @ " + posting_company
     print(posting_headline)
 
     # Check if there's a 'Quick Apply' button
@@ -103,11 +103,14 @@ for posting in postings:
 
         # Click resume button (If it's not Quick Apply.  If it is quick apply, jump straight to submitting.)
         if not has_quick_apply:
+            # Throw out 'Apply' types that aren't just resume
+            # FIXME -- ADD CASE TO THROW OUT TOO SPECIFIC 'APPLY' types that ask for 'cover letter', 'transcript', anything more than resume
+
+            # If there's no add resume button, skip over that posting
             add_resume_btn_results = driver.find_elements(
                 By.XPATH,
                 "/html/body/reach-portal/div[3]/div/div/div/span/form/div[1]/div/div[2]/fieldset/div/div[2]/span[1]/button",
             )
-            # If there's no add resume button, skip over that posting
             if len(add_resume_btn_results) == 0:
                 exit_posting_btn.click()
                 continue  # Skip to next posting
