@@ -46,6 +46,12 @@ password_input.send_keys(Keys.ENTER)  # Press enter to submit login
 # Give time to do DUO two-factor auth and redirect to postings page
 sleep(25)
 
+# Bypass the remember this computer screen
+driver.find_element(By.ID, "trust-browser-button").click()
+
+# Give time to finish bypass
+sleep(10)
+
 num_applies = 0  # Keeps track of how many times you applied successfully
 
 jobs_applied = []  # Array containing jobs where you successfully applied
