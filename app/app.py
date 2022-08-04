@@ -1,6 +1,7 @@
-from flask import Flask
-from flask import render_template
-from flask import request
+from flask import Flask, render_template, request, redirect, url_for
+import os
+
+from utils.handshake import handshake
 
 app = Flask(__name__)
 app.debug = True
@@ -16,8 +17,16 @@ def apply():
     username = request.form["username"]
     password = request.form["password"]
     query = request.form["query"]
-    print("here", username, password, query)
-    return None
+
+    print("handshaking")
+    # temporary
+    username = os.environ.get("BYU_USERNAME")
+    password = os.environ.get("BYU_PASSWORD")
+    # print("here", username, password, query)
+    handshake(username, password, query)
+    print("finished handshake")
+    # We'll want it to go to an intermediate page
+    return redirect(url_for("done"))
 
 
 @app.route("/done")
