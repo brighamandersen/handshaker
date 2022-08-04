@@ -18,51 +18,33 @@
 <div class="card is-loading">
   <div class="card-content">
     <div class="content">
-      
-   
-<form>
-  <div class="field">
-    <label class="label" for="username">BYU Net ID</label>
-    <div class="control">
-      <input class="input" name="username" type="text" placeholder="Username" required>
+      <form action="{{ url_for('apply') }}" method="post">
+        <div class="field">
+          <label class="label" for="username">BYU Net ID</label>
+          <div class="control">
+            <input class="input" name="username" type="text" placeholder="Username" required>
+          </div>
+        </div>
+        <div class="field">
+          <label class="label" for="password">Password</label>
+          <div class="control">
+            <input class="input" name="password" type="password" placeholder="Password" required>
+          </div>
+        </div>
+        <div class="field">
+          <label class="label" for="query">Job title you want</label>
+          <div class="control">
+            <input class="input" name="query" type="text" placeholder="Job title" required>
+          </div>
+        </div>
+        <div class="field">
+          <div class="control">
+            <button class="button is-link" type="submit">Submit</button>
+          </div>
+        </div>
+      </form>
     </div>
   </div>
-  <div class="field">
-    <label class="label" for="password">Password</label>
-    <div class="control">
-      <input class="input" name="password" type="text" placeholder="Password" required>
-    </div>
-  </div>
-  <div class="field">
-    <label class="label" for="query">Job title you want</label>
-    <div class="control">
-      <input class="input" name="query" type="text" placeholder="Job title" required>
-    </div>
-  </div>
-  <div class="field">
-    <div class="control">
-      <button class="button is-link" type="submit">Submit</button>
-    </div>
-  </div>
-  <!-- <div>
-    <label for="username">BYU Net ID</label>
-    <input type="text" name="username" required>
-  </div> -->
-  <!-- <div>
-    <label for="password">Password</label>
-    <input type="text" name="password" required>
-  </div> -->
-  <!-- <div>
-    <label for="query">Job title you want</label>
-    <input type="text" name="query" required>
-  </div> -->
-  <!-- <div>
-    <button type="submit">Apply for me!</button>
-  </div> -->
-</form>
-
-</div>
-</div>
 </div>
 
 <br>

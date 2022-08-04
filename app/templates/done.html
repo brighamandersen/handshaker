@@ -1,3 +1,5 @@
+{% extends "base.html" %} {% block content %}
+
 <h1>You applied successfully.</h1>
 <div>
 <a href="https://byu.joinhandshake.com/applications?ref=account-dropdown" target="_blank">
@@ -7,3 +9,5 @@
 
 <br>
 <a href={{ url_for('index') }}>Return home</a>
+
+{% endblock %}

@@ -16,6 +16,7 @@ def apply():
     username = request.form["username"]
     password = request.form["password"]
     query = request.form["query"]
+    print("here", username, password, query)
     return None
 
 
