@@ -23,10 +23,15 @@ def apply():
     username = os.environ.get("BYU_USERNAME")
     password = os.environ.get("BYU_PASSWORD")
     # print("here", username, password, query)
-    handshake(username, password, query)
+    result = handshake(username, password, query, True)
+    print("res", result)
     print("finished handshake")
+    print("ja", result.jobs_applied)
     # We'll want it to go to an intermediate page
-    return redirect(url_for("done"))
+    # return redirect(url_for("done"), jobs_applied=result.jobs_applied, job_query=query)
+    return render_template(
+        "done.html", jobs_applied=result.jobs_applied, job_query=query
+    )
 
 
 @app.route("/done")
