@@ -1,10 +1,15 @@
 {% extends "base.html" %} {% block content %}
 
-<h1>You applied successfully.</h1>
+<h1>You applied successfully to {{ jobs_applied|length }} {{ job_query }} positions.</h1>
+<ul>
+  {% for job in jobs_applied %}
+  <li>{{ job }}</li>
+  {% endfor %}
+</ul>
 <div>
-<a href="https://byu.joinhandshake.com/applications?ref=account-dropdown" target="_blank">
-  <button>See applications</button>
-</a>
+  <a href="https://byu.joinhandshake.com/applications?ref=account-dropdown" target="_blank">
+    <button>See applications</button>
+  </a>
 </div>
 
 <br>
