@@ -12,7 +12,8 @@ def handshake(
     # start up web driver
     chrome_options = Options()
     if headless:
-        print("running headless")
+        print("Running headless...")
+        print()
         chrome_options.add_argument("--headless")
 
     chrome_options.add_argument("--window-size=1920,1080")
