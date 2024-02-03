@@ -4,3 +4,11 @@ A script that automatically applies to jobs for me. Web scrapes the BYU Handshak
 
 ## Demo Video
 [![Demo Video](https://img.youtube.com/vi/34GiNbJ4ECc/0.jpg)](https://youtu.be/34GiNbJ4ECc)
+
+## Usage
+
+```
+python script.py -q "Web developer"
+```
+
+`-q` or `--query` is the flag where you can enter the job you're interested in.
