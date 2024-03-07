@@ -5,6 +5,7 @@ A script that automatically applies to jobs for me. Web scrapes the BYU Handshak
 ## Demo Video
 
 [![Demo Video](https://img.youtube.com/vi/34GiNbJ4ECc/0.jpg)](https://youtu.be/34GiNbJ4ECc)
+[Watch on YouTube](https://youtu.be/34GiNbJ4ECc)
 
 ## Installation
 
