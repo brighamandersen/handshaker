@@ -12,7 +12,7 @@ A script that automatically applies to jobs for me. Web scrapes the BYU Handshak
 touch .env
 ```
 
-Make sure to fill `.env` with correct contents (see [`./.env.example`](`/bot.py`)).
+Make sure to fill `.env` with correct contents (see [`./.env.example`](`/.env.example`)).
 
 ## Usage
 
